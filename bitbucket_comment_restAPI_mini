@@ -1,0 +1,19 @@
+import requests
+import pandas as pd
+import json
+import time
+
+df = pd.read_csv('/text.csv')
+df = df['list'].unique()
+
+for x in df:
+    headers = {'content-type': 'application/json'}
+    comment = '#TRIGGER_CI_BUILD'
+    yy = x.split('/')[6]
+    # print(x.split('/')[6])
+    zz = x.split('/')[-1]
+    # print(zz)
+    commentLink = f'https://xxxx.com/rest/api/1.0/projects/xxxxx_PLATFORM/repos/{yy}/pull-requests/{zz}/comments'
+    print(commentLink)
+    # res = requests.post(commentLink, auth=('account1','pass123'), headers=headers, data=json.dumps({"text": comment }))
+    time.sleep(0.01)
