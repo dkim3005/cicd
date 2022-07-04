@@ -1,0 +1,44 @@
+version: "2"
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - monitoring
+    volumes:
+      - /home/djkim/influxTest/grafana-volume:/var/lib/grafana
+    user: root
+    command: >
+      sh -c "chown -R root:root /etc/grafana && \
+             chmod -R a+r /etc/grafana && \
+             chown -R grafana:grafana /var/lib/grafana && \
+             chown -R grafana:grafana /usr/share/grafana"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - monitoring
+    volumes:
+      - /home/djkim/influxTest/influxdb-volume:/var/lib/influxdb
+
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    container_name: jenkins
+    ports:
+      - 8080:8080
+    volumes:
+      - /home/djkim/influxTest/jenkins-volume:/var/lib/jenkins
+    networks:
+      - monitoring
+networks:
+  monitoring:
