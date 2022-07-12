@@ -1,0 +1,37 @@
+필요한 columns
+
+
+Y
+
+핵심 데이터 (결과물)
+sstate (float)
+
+
+X
+
+빌드 외적 요소
+target (downtream)
+
+
+빌드 외적 요소 (strong)
+해당 repo의 커밋 개수(여러개 있으면 sstate cache율이 떨어짐)
+
+
+빌드 외적 요소 (weak)
+시간(월/요일/시간대/휴일여부)
+
+
+
+빌드 내적 요소(과정)
+source PR (bool)
+meta PR (bool)
+RR (bool)
+single (bool)
+MPR (bool)
+
+
+빌드 내적 요소(결과)
+빌드 총 소요 시간 (구간별 빌드 소요 시간) (int=miliseconds)
+
+
+
