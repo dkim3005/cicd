@@ -34,4 +34,4 @@ MPR (bool)
 빌드 총 소요 시간 (구간별 빌드 소요 시간) (int=miliseconds)
 
 
-
+https://www.kaggle.com/code/themlphdstudent/cheatsheet-matplotlib-charts
